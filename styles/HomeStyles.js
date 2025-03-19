@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const homeStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1a5dbc',
+    backgroundColor: '#00000',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -12,4 +12,9 @@ export const homeStyles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 700,
   },
+  imagen: {
+    height: 280,
+    width: 280,
+    marginBottom: 20,
+  }
 })
