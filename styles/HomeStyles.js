@@ -16,5 +16,16 @@ export const homeStyles = StyleSheet.create({
     height: 280,
     width: 280,
     marginBottom: 20,
-  }
+  },
+  btn: {
+    backgroundColor: '#3b5998',
+    borderRadius: 5,
+    paddingVertical: 5,
+    paddingHorizontal: 20,
+  },
+  txtBtn: {
+    color: '#fff',
+    fontSize: 15,
+    fontStyle: 'italic',
+  },
 })

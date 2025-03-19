@@ -1,5 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { ImageBackground, Text, View } from 'react-native';
+import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 import { homeStyles } from './styles/HomeStyles';
 
 
@@ -23,6 +23,10 @@ const loginWithFacebook = () => {
       <FontAwesome.Button name="facebook" size={30} backgroundColor="#3b5998" borderRadius={10} onPress={loginWithFacebook}>
         Login con Facebook
       </FontAwesome.Button>
+
+      <TouchableOpacity style={homeStyles.btn}>
+        <Text style={homeStyles.txtBtn} onPress={()=> console.log('Estas presionando el botón personalizado') }>Esto es un botón personalizado</Text>
+      </TouchableOpacity>
     </View>
   );
 }
