@@ -1,62 +1,67 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { ImageBackground, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { homeStyles } from './styles/HomeStyles';
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { data } from './config/api';
 
 
 export default function App() {
-
-const loginWithFacebook = () => {
-  console.log('Estas presionando el boton de Facebook');
-};
-
+  const renderItem = ({ item }) => {
+    return(
+    <View style={styles.card}>
+      <Image source={{ uri: item.imageUrl }} style={styles.image} />
+      <View style={styles.cardContent}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.description}>{item.description}</Text>
+      </View>
+    </View>
+    );
+  };
 
   return (
-    <ScrollView >
-      <View style={homeStyles.container}>
-
-      <ImageBackground resizeMode='cover' source={{ uri: 'https://www.infobae.com/resizer/v2/IRE5TJ2RXRFFXEQBIDCUEVORAM.jpg?auth=6d100eb097084544152f4b32bc6ffd3b099a346234206c2397a652fd7dbd4788&smart=true&width=1200&height=1200&quality=85' }} >
-        <View>
-          <Text style={homeStyles.titulo}>Este es el título</Text>
-        </View>
-        <Text>Hola me llamo Diego!</Text>
-      </ImageBackground>
-
-      <FontAwesome.Button name="facebook" size={30} backgroundColor="#3b5998" borderRadius={10} onPress={loginWithFacebook}>
-        Login con Facebook
-      </FontAwesome.Button>
-
-      <TouchableOpacity  
-        onPress={()=> console.log('Estas presionando el botón personalizado')}
-        style={homeStyles.btn}>
-          <Text style={homeStyles.txtBtn }>Esto es un botón personalizado</Text>
-      </TouchableOpacity>
-
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, eum. Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-      </View>
-      
-    </ScrollView>
+    <View style={styles.container}>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        contentContainerStyle={styles.list} 
+        showsVerticalScrollIndicator={false}        
+      /> 
+    </View>   
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f8f8f8',
+    paddingTop: 10,
+  },
+  list: {
+    paddingHorizontal: 20,
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    marginVertical: 10,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    shadowOffset: {width: 0, height: 2},
+    elevation: 3,
+  },
+  cardContent: {
+    padding: 15,
+  },
+  image: {
+    width: '100%',
+    height: 100,    
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  description: {
+    fontSize: 14,
+    color: '#555',
+  },
+})
