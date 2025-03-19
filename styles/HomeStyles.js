@@ -4,8 +4,8 @@ export const homeStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#00000',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   titulo: {
     color: '#fff',
@@ -22,6 +22,7 @@ export const homeStyles = StyleSheet.create({
     borderRadius: 5,
     paddingVertical: 5,
     paddingHorizontal: 20,
+    marginTop: 20,
   },
   txtBtn: {
     color: '#fff',
