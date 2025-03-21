@@ -1,4 +1,5 @@
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { FlatList, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import { data } from './config/api';
 
 
@@ -16,7 +17,12 @@ export default function App() {
   };
 
   return (
+    // Main
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor='#ffffff' />
+      <TextInput
+        placeholder='Ingresa tu nombre'
+      />
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
