@@ -23,6 +23,7 @@ export default function App() {
       <TextInput
         placeholder='Ingresa tu nombre'
       />
+      {/* View */}
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
